@@ -175,14 +175,14 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="180"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_profile-empty" translatesAutoresizingMaskIntoConstraints="NO" id="XIy-lk-Opa">
-                                        <rect key="frame" x="147" y="16" width="120" height="120"/>
+                                        <rect key="frame" x="157" y="25" width="100" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="1rb-rR-xxB"/>
-                                            <constraint firstAttribute="width" constant="120" id="RVj-Yg-eFE"/>
+                                            <constraint firstAttribute="height" constant="100" id="1rb-rR-xxB"/>
+                                            <constraint firstAttribute="width" constant="100" id="RVj-Yg-eFE"/>
                                         </constraints>
                                     </imageView>
-                                    <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Dave Vo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2A-e3-KX7">
-                                        <rect key="frame" x="169" y="146" width="77" height="24"/>
+                                    <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="fb name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2A-e3-KX7">
+                                        <rect key="frame" x="169.33333333333337" y="135" width="76.666666666666657" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -190,7 +190,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="XIy-lk-Opa" firstAttribute="top" secondItem="2nP-gU-VFW" secondAttribute="top" constant="16" id="1vc-DL-dO6"/>
+                                    <constraint firstItem="XIy-lk-Opa" firstAttribute="top" secondItem="2nP-gU-VFW" secondAttribute="top" constant="25" id="1vc-DL-dO6"/>
                                     <constraint firstAttribute="height" constant="180" id="P0K-G0-PV4"/>
                                     <constraint firstItem="N2A-e3-KX7" firstAttribute="centerX" secondItem="2nP-gU-VFW" secondAttribute="centerX" id="hKy-pl-JTR"/>
                                     <constraint firstItem="XIy-lk-Opa" firstAttribute="centerX" secondItem="2nP-gU-VFW" secondAttribute="centerX" id="rOp-4f-kvF"/>
@@ -270,6 +270,8 @@
                     <connections>
                         <outlet property="accountIDLabel" destination="AKb-e5-ao6" id="sns-Xw-ZDO"/>
                         <outlet property="accountView" destination="bSG-Ac-Oli" id="aTj-kW-kmU"/>
+                        <outlet property="fbNameLabel" destination="N2A-e3-KX7" id="Kxw-2z-bJf"/>
+                        <outlet property="fbProfileImage" destination="XIy-lk-Opa" id="hRn-k3-XDD"/>
                         <outlet property="titleLabel" destination="GaB-67-I8p" id="Rh8-tQ-stb"/>
                         <outlet property="valueLabel" destination="dv2-nI-Ugx" id="EMA-IC-0vm"/>
                     </connections>

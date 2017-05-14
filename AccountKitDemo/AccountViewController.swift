@@ -30,6 +30,8 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var accountView: UIStackView!
+    @IBOutlet weak var fbNameLabel: UILabel!
+    @IBOutlet weak var fbProfileImage: UIImageView!
     
     // MARK: Properties
     fileprivate var accountKit = AKFAccountKit(responseType: AKFResponseType.accessToken)
@@ -50,8 +52,45 @@ class AccountViewController: UIViewController {
         super.viewWillAppear(animated)
         applyStyling()
         
-        // TODO: Use the accountKit property to request an account object.
         accountView.isHidden = isFacebookLogin
+        
+        if isFacebookLogin {
+            let graphRequest = FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": "picture.width(200), name"])
+            
+            graphRequest?.start(completionHandler: { [weak self] (_, result, error) in
+                
+                if let error = error {
+                    print("error: \(error.localizedDescription)")
+                    return
+                }
+                
+                if let result = result as? [String: Any] {
+                    if let username = result["name"] as? String {
+                        self?.fbNameLabel.text = username
+                    }
+                    
+                    if let pic = result["picture"] as? NSDictionary {
+                        let picUrlString = pic.value(forKeyPath: "data.url") as? String
+                        
+                        // too lazy to add a pod
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            guard
+                                let picUrl = URL(string: picUrlString!),
+                                let imageData = NSData(contentsOf: picUrl)
+                                else {
+                                    return
+                            }
+                            
+                            DispatchQueue.main.async {
+                                self?.fbProfileImage.image = UIImage(data: imageData as Data)
+                            }
+                        }
+
+                    }
+                }
+            })
+            
+        }
         
         if isAccountKitLogin {
             accountKit.requestAccount { [weak self] (account, error) in
@@ -82,6 +121,9 @@ class AccountViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 17)!]
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white
+        
+        fbProfileImage.layer.cornerRadius = 50
+        fbProfileImage.clipsToBounds = true
     }
     
     
